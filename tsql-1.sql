@@ -21,7 +21,7 @@ SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-11-29T18:29:29Z&st=2
 
 ---------------Backup the database with compressed encryption---------------
 declare @backupfile nvarchar(2000)
-set @backupfile = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/d1_backup_' + replace(convert(nvarchar(50), getdate(), 120), ' ',':') + N'.bak'
+set @backupfile = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/d1_backup_' + replace(convert(nvarchar(50), getdate(), 120), ' ','-') + N'.bak'
 
 
 BACKUP DATABASE [dummydb]
