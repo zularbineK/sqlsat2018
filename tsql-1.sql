@@ -1,14 +1,14 @@
 -- Creates a database master key.
 -- The key is encrypted using the password "Bangladesh@1"
 
-DECLARE @NON_ENCRYTEPD_FILE_NAME varchar(1000)
-DECLARE @ENCRYPTED_FILE_NAME varchar(1000)
+--DECLARE @NON_ENCRYTEPD_FILE_NAME varchar(1000)
+--DECLARE @ENCRYPTED_FILE_NAME varchar(1000)
 
-SET @NON_ENCRYPTED_FILE_NAME = (select  'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018Non_encrypted_backup_' + convert(varchar(500),GetDate(),112) + '.bak')
-SET @ENCRYPTED_FILE_NAME = (select  'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018Encrypted_backup_' + convert(varchar(500),GetDate(),112) + '.bak')
+--SET @NON_ENCRYPTED_FILE_NAME = (select  'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018Non_encrypted_backup_' + convert(varchar(500),GetDate(),112) + '.bak')
+--SET @ENCRYPTED_FILE_NAME = (select  'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018Encrypted_backup_' + convert(varchar(500),GetDate(),112) + '.bak')
 
-PRINT @NON_ENCRYPTED_FILE_NAME
-PRINT @ENCRYPTED_FILE_NAME
+--PRINT @NON_ENCRYPTED_FILE_NAME
+--PRINT @ENCRYPTED_FILE_NAME
 
 
 USE master;
@@ -36,8 +36,8 @@ GO
 
 ---------------Backup the database with compressed encryption---------------
 BACKUP DATABASE [dummydb]
---TO  URL = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/d1_backup_'+ REPLACE(convert(nvarchar(20),GetDate(),120),':','-') +'.bak' 
-TO URL = @ENCRYPTED_FILE_NAME
+TO  URL = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/d1_backup_2018_21_1.bak' 
+--TO URL = @ENCRYPTED_FILE_NAME
 WITH
   COMPRESSION,
   ENCRYPTION
@@ -51,6 +51,6 @@ GO
 use master;
 ---------------------Backup the database without compression and encryption---------------
 BACKUP DATABASE [dummydb]
---TO  URL = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/NOEncrypt_d1_backup_'+ REPLACE(convert(nvarchar(20),GetDate(),120),':','-') +'.bak' 
-TO URL = @NON_ENCRYPTED_FILE_NAME
+TO  URL = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/NOEncrypt_d1_backup_2018_21_1.bak' 
+--TO URL = @NON_ENCRYPTED_FILE_NAME
 GO
