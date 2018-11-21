@@ -21,7 +21,6 @@ SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-11-29T18:29:29Z&st=2
 
 ---------------Backup the database with compressed encryption---------------
 declare @backupfile nvarchar(2000)
-
 set @backupfile = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/d1_backup_' + replace(convert(nvarchar(50), getdate(), 120), ' ',':') + N'.bak'
 
 
@@ -38,7 +37,9 @@ WITH
    ),
   STATS = 10
 
----------------------Backup the database without compression and encryption---------------
---BACKUP DATABASE [dummydb]
---TO  URL = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/NOEncrypt_d1_backup_2018_21_3.bak' 
+set @backupfile = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/d1_backup_' + getdate() + N'.bak'
 
+---------------------Backup the database without compression and encryption---------------
+BACKUP DATABASE [dummydb]
+--TO  URL = N'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018/NOEncrypt_d1_backup_2018_21_3.bak' 
+TO URL = @backupfile
