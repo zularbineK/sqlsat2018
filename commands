@@ -1,0 +1,15 @@
+SELECT Name from sys.Databases;
+
+
+CREATE DATABASE dummydb;
+
+
+select * from dummydb.INFORMATION_SCHEMA.TABLES;
+
+List all certificates: 
+select * from sys.certificates
+
+
+sqlcmd -S sqlserver-commandline -i tsql.sql
+
+

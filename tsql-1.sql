@@ -8,6 +8,7 @@ SET @NON_ENCRYPTED_FILE_NAME = (select  'https://sqlserverbackup101.blob.core.wi
 SET @ENCRYPTED_FILE_NAME = (select  'https://sqlserverbackup101.blob.core.windows.net/sqlsat2018Encrypted_backup_' + convert(varchar(500),GetDate(),112) + '.bak')
 
 PRINT @NON_ENCRYPTED_FILE_NAME
+PRINT @ENCRYPTED_FILE_NAME
 
 
 USE master;
