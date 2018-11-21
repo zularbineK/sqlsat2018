@@ -21,7 +21,7 @@ END
 GO
 
 
---IF NOT EXISTS(select * from sys.certificates where name = 'SqlSatDemoCert')
+IF NOT EXISTS(select 1 from sys.certificates where name = 'SqlSatDemoCert')
 BEGIN
 CREATE CERTIFICATE SqlSatDemoCert
    WITH SUBJECT = 'MyTestDB Backup Encryption Certificate';
