@@ -4,6 +4,6 @@ RESTORE DATABASE [dummydb] FROM  URL = N'https://sqlserverbackup101.blob.core.wi
 WITH  FILE = 1,  NOUNLOAD,  STATS = 5, REPLACE
 ALTER DATABASE [dummydb] SET MULTI_USER
 GO
---OUTPUT
+
 
 
